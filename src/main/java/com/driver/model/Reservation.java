@@ -1,5 +1,8 @@
 package com.driver.model;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -11,13 +14,16 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private User user;
 
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private Spot spot;
 
     @OneToOne(mappedBy = "reservation",cascade = CascadeType.ALL)
+    @JsonIgnore
     private Payment payment;
 
     private int numberOfHours;
