@@ -30,15 +30,23 @@ public class ReservationServiceImpl implements ReservationService {
         if(parkingLot.getName()==null)
             throw new Exception("Cannot make reservation");
 
+        Spot checkSpot=new Spot();
         String spotType;
-        if (numberOfWheels==2)
+        if (numberOfWheels==2){
             spotType = "TWO_WHEELER";
-        else if(numberOfWheels==4)
-            spotType = "FOUR_WHEELER";
-        else //if(numberOfWheels>4)
-            spotType = "OTHERS";
+             checkSpot=spotRepository3.findSpotforTwoWheeler(parkingLotId);
+        }
 
-        Spot checkSpot=spotRepository3.findSpot(parkingLotId,spotType);
+        else if(numberOfWheels==4){
+            spotType = "FOUR_WHEELER";
+             checkSpot=spotRepository3.findSpotforFourWheeler(parkingLotId);
+        }
+
+        else {
+            spotType = "OTHERS";
+             checkSpot=spotRepository3.findSpotforOthers(parkingLotId);
+        }
+
         if (checkSpot==null)
             throw new Exception("Cannot make reservation");
 
