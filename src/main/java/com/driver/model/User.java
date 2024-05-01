@@ -12,7 +12,7 @@ public class User {
     private int id;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    @JsonIgnore
+    //@JsonIgnore
     List<Reservation> reservationList;
 
     private String name;

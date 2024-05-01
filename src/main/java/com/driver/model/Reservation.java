@@ -23,7 +23,7 @@ public class Reservation {
     private Spot spot;
 
     @OneToOne(mappedBy = "reservation",cascade = CascadeType.ALL)
-    @JsonIgnore
+    //@JsonIgnore
     private Payment payment;
 
     private int numberOfHours;
