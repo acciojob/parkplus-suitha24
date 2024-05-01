@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Integer>{
 
+    @Query(value = "select * from reservation where id=:id",nativeQuery = true)
+    Reservation findReservationById(int id);
 
 }

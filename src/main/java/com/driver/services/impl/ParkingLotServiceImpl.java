@@ -27,7 +27,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
         newParkingLot.setAddress(address);
         newParkingLot.setName(name);
         parkingLotRepository1.save(newParkingLot);
-        return parkingLotRepository1.findById(newParkingLot.getId()).get();
+        return parkingLotRepository1.findParkingLotById(newParkingLot.getId());
     }
 
     @Override
@@ -42,7 +42,7 @@ public class ParkingLotServiceImpl implements ParkingLotService {
         else if(numberOfWheels>4)
             newSpot.setSpotType(SpotType.OTHERS);
 
-        ParkingLot parkingLot=parkingLotRepository1.findById(parkingLotId).get();
+        ParkingLot parkingLot=parkingLotRepository1.findParkingLotById(parkingLotId);
 
         newSpot.setParkingLot(parkingLot);
         newSpot.setOccupied(false);
