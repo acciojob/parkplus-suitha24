@@ -13,7 +13,7 @@ public class Payment {
 
     @OneToOne
     @JoinColumn
-    @JsonIgnore
+   // @JsonIgnore
     private Reservation reservation;
 
     boolean paymentCompleted;

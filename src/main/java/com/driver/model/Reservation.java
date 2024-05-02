@@ -14,12 +14,12 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn
-    @JsonIgnore
+   // @JsonIgnore
     private User user;
 
     @ManyToOne
     @JoinColumn
-    @JsonIgnore
+    //@JsonIgnore
     private Spot spot;
 
     @OneToOne(mappedBy = "reservation",cascade = CascadeType.ALL)
