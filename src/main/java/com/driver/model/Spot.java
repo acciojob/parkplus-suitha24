@@ -13,11 +13,11 @@ public class Spot {
     private int id;
     @ManyToOne
     @JoinColumn
-    //@JsonIgnore
+    @JsonIgnore
     private ParkingLot parkingLot;
 
     @OneToMany(mappedBy = "spot",cascade = CascadeType.ALL)
-   // @JsonIgnore
+    @JsonIgnore
     List<Reservation> reservationList;
 
     @Enumerated(EnumType.STRING)

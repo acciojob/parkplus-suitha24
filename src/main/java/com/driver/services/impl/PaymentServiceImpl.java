@@ -28,8 +28,11 @@ public class PaymentServiceImpl implements PaymentService {
         int totalHrs=reservation.getNumberOfHours();
         int pricePerHr=reservation.getSpot().getPricePerHour();
 
-        if(amountSent<totalHrs*pricePerHr)
+        if(amountSent<totalHrs*pricePerHr){
             throw new Exception("Insufficient Amount");
+
+        }
+
 
 //        if(mode.equals("CASH")==false || mode.equals("CARD")==false || mode.equals("UPI")==false)
 //            throw new Exception("Payment mode not detected");
