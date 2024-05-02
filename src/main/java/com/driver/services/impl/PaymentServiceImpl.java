@@ -29,6 +29,7 @@ public class PaymentServiceImpl implements PaymentService {
         int pricePerHr=reservation.getSpot().getPricePerHour();
 
         if(amountSent<totalHrs*pricePerHr){
+           // return null;
             throw new Exception("Insufficient Amount");
 
         }

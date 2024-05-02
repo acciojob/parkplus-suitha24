@@ -17,7 +17,7 @@ public class Spot {
     private ParkingLot parkingLot;
 
     @OneToMany(mappedBy = "spot",cascade = CascadeType.ALL)
-    @JsonIgnore
+  //  @JsonIgnore
     List<Reservation> reservationList;
 
     @Enumerated(EnumType.STRING)
