@@ -1,9 +1,11 @@
 package com.driver.services.impl;
 
 import com.driver.model.ParkingLot;
+import com.driver.model.Reservation;
 import com.driver.model.Spot;
 import com.driver.model.SpotType;
 import com.driver.repository.ParkingLotRepository;
+import com.driver.repository.ReservationRepository;
 import com.driver.repository.SpotRepository;
 import com.driver.services.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     ParkingLotRepository parkingLotRepository1;
     @Autowired
     SpotRepository spotRepository1;
+
+    @Autowired
+    ReservationRepository reservationRepository1;
     @Override
     public ParkingLot addParkingLot(String name, String address) {
 
@@ -39,20 +44,25 @@ public class ParkingLotServiceImpl implements ParkingLotService {
             newSpot.setSpotType(SpotType.TWO_WHEELER);
         else if (numberOfWheels==4)
             newSpot.setSpotType(SpotType.FOUR_WHEELER);
-        else if(numberOfWheels>4)
+        else //if(numberOfWheels>4)
             newSpot.setSpotType(SpotType.OTHERS);
 
         ParkingLot parkingLot=parkingLotRepository1.findParkingLotById(parkingLotId);
+        if(parkingLot==null)
+            return null;
 
-        if (parkingLot!=null){
-            newSpot.setParkingLot(parkingLot);
-            newSpot.setOccupied(false);
-            newSpot.setPricePerHour(pricePerHour);
+        //if (parkingLot!=null){
+        newSpot.setParkingLot(parkingLot);
+        newSpot.setOccupied(false);
+        newSpot.setPricePerHour(pricePerHour);
 
-            spotRepository1.save(newSpot);
-        }
+        spotRepository1.save(newSpot);
 
+        List<Reservation> reservation= reservationRepository1.findReservationBySpotId(newSpot.getId());
+        newSpot.setReservationList(reservation);
+        spotRepository1.save(newSpot);
 
+        //}
         return newSpot;
 
     }
