@@ -26,12 +26,14 @@ public class ReservationServiceImpl implements ReservationService {
         //User user=userRepository3.findById(userId).get();
         User user= userRepository3.findUserById(userId);
         if(user==null)
-            throw new Exception("Cannot make reservation");
+            return null;
+            //throw new Exception("Cannot make reservation");
 
         //ParkingLot parkingLot=parkingLotRepository3.findById(parkingLotId).get();
         ParkingLot parkingLot= parkingLotRepository3.findParkingLotById(parkingLotId);
         if(parkingLot==null)
-            throw new Exception("Cannot make reservation");
+            return null;
+            //throw new Exception("Cannot make reservation");
 
         Spot checkSpot=new Spot();
         String spotType;
@@ -51,7 +53,8 @@ public class ReservationServiceImpl implements ReservationService {
         }
 
         if (checkSpot==null)
-            throw new Exception("Cannot make reservation");
+            return null;
+           // throw new Exception("Cannot make reservation");
 
        // else {
             checkSpot.setOccupied(true);
