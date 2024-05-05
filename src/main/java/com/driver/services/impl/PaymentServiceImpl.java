@@ -1,5 +1,6 @@
 package com.driver.services.impl;
 
+import com.driver.exception.InsufficientAmount;
 import com.driver.model.Payment;
 import com.driver.model.PaymentMode;
 import com.driver.model.Reservation;
@@ -30,7 +31,8 @@ public class PaymentServiceImpl implements PaymentService {
 
         if(amountSent<totalHrs*pricePerHr){
            // return null;
-            throw new Exception("Insufficient Amount");
+           // throw new Exception("Insufficient Amount");
+            throw new InsufficientAmount("Insufficient Amount");
 
         }
 
