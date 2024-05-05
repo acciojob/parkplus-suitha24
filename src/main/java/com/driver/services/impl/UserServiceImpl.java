@@ -26,13 +26,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updatePassword(Integer userId, String password) {
-        userRepository4.updatePassword(userId,password);
-        User updatedUser = userRepository4.findUserById(userId);
-                //userRepository4.findById(userId).get();
-        List<Reservation> reservationList=reservationRepository5.findReservationByUserId(userId);
-        updatedUser.setReservationList(reservationList);
-        userRepository4.save(updatedUser);
-        return updatedUser;
+       User user=userRepository4.findById(userId).get();
+       user.setPassword(password);
+       userRepository4.save(user);
+       return user;
     }
 
     @Override

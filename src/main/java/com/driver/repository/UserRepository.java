@@ -11,13 +11,4 @@ import javax.transaction.Transactional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
 
-    @Transactional
-    @Modifying
-    @Query(value = "update user set password=:password where id=:userId",nativeQuery = true)
-    void updatePassword(Integer userId, String password);
-
-    @Query(value = "select * from user where id=:id",nativeQuery = true)
-    User findUserById(int id);
-
-
 }
