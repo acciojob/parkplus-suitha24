@@ -1,6 +1,7 @@
 package com.driver.services.impl;
 
 import com.driver.exception.InsufficientAmount;
+import com.driver.exception.PaymentModeNotDetected;
 import com.driver.model.Payment;
 import com.driver.model.PaymentMode;
 import com.driver.model.Reservation;
@@ -48,7 +49,7 @@ public class PaymentServiceImpl implements PaymentService {
         else if(mode.equals("UPI")||mode.equals("upi"))
             payment.setPaymentMode(PaymentMode.UPI);
         else
-            throw new Exception("Payment mode not detected");
+            throw new PaymentModeNotDetected("Payment mode not detected");
 
         payment.setPaymentCompleted(true);
         payment.setReservation(reservation);
