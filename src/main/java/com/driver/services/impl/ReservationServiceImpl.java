@@ -30,7 +30,7 @@ public class ReservationServiceImpl implements ReservationService {
             throw new CannotMakeReservation("Cannot make reservation");
 
         //ParkingLot parkingLot=parkingLotRepository3.findById(parkingLotId).get();
-        ParkingLot parkingLot= parkingLotRepository3.findParkingLotById(parkingLotId);
+        ParkingLot parkingLot= parkingLotRepository3.findById(parkingLotId).get();
         if(parkingLot==null)
             throw new CannotMakeReservation("Cannot make reservation");
 
@@ -55,15 +55,15 @@ public class ReservationServiceImpl implements ReservationService {
             throw new CannotMakeReservation("Cannot make reservation");
 
        // else {
-            checkSpot.setOccupied(true);
-            Reservation newReservation=new Reservation();
-            newReservation.setSpot(checkSpot);
-            newReservation.setUser(user);
-            newReservation.setNumberOfHours(timeInHours);
+        checkSpot.setOccupied(true);
+        Reservation newReservation=new Reservation();
+        newReservation.setSpot(checkSpot);
+        newReservation.setUser(user);
+        newReservation.setNumberOfHours(timeInHours);
 
-            reservationRepository3.save(newReservation);
+        reservationRepository3.save(newReservation);
 
-            return newReservation;
+        return newReservation;
         //}
 
 

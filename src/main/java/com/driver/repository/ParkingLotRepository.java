@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ParkingLotRepository extends JpaRepository<ParkingLot, Integer>{
 
-    @Query(value = "select * from parking_lot where id=:id",nativeQuery = true)
-    ParkingLot findParkingLotById(int id);
+//    @Query(value = "select * from parking_lot where id=:id",nativeQuery = true)
+//    ParkingLot findParkingLotById(int id);
 }
