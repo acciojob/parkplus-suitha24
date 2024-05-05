@@ -3,6 +3,7 @@ package com.driver.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,11 +14,22 @@ public class User {
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     //@JsonIgnore
-    List<Reservation> reservationList;
+    List<Reservation> reservationList=new ArrayList<>();
 
     private String name;
     private String phoneNumber;
     private String password;
+
+    public User() {
+    }
+
+    public User(int id, List<Reservation> reservationList, String name, String phoneNumber, String password) {
+        this.id = id;
+        this.reservationList = reservationList;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+    }
 
     public int getId() {
         return id;

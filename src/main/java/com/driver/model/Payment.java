@@ -20,6 +20,16 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     PaymentMode paymentMode;
 
+    public Payment() {
+    }
+
+    public Payment(int id, Reservation reservation, boolean paymentCompleted, PaymentMode paymentMode) {
+        this.id = id;
+        this.reservation = reservation;
+        this.paymentCompleted = paymentCompleted;
+        this.paymentMode = paymentMode;
+    }
+
     public int getId() {
         return id;
     }

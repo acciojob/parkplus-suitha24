@@ -4,6 +4,7 @@ package com.driver.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,12 +19,24 @@ public class Spot {
 
     @OneToMany(mappedBy = "spot",cascade = CascadeType.ALL)
   //  @JsonIgnore
-    List<Reservation> reservationList;
+    List<Reservation> reservationList=new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     SpotType spotType;
     private Integer pricePerHour;
     private Boolean occupied;
+
+    public Spot() {
+    }
+
+    public Spot(int id, ParkingLot parkingLot, List<Reservation> reservationList, SpotType spotType, Integer pricePerHour, Boolean occupied) {
+        this.id = id;
+        this.parkingLot = parkingLot;
+        this.reservationList = reservationList;
+        this.spotType = spotType;
+        this.pricePerHour = pricePerHour;
+        this.occupied = occupied;
+    }
 
     public int getId() {
         return id;
