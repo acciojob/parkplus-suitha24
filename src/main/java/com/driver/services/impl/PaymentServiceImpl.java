@@ -23,8 +23,8 @@ public class PaymentServiceImpl implements PaymentService {
     public Payment pay(Integer reservationId, int amountSent, String mode) throws Exception {
         Payment payment=new Payment();
 
-        Reservation reservation= reservationRepository2.findReservationById(reservationId);
-                //reservationRepository2.findById(reservationId).get();
+        Reservation reservation= reservationRepository2.findById(reservationId).get();
+        //reservationRepository2.findReservationById(reservationId);
 
         //calculate price
         int totalHrs=reservation.getNumberOfHours();
@@ -55,7 +55,9 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setPaymentCompleted(true);
         payment.setReservation(reservation);
 
-        paymentRepository2.save(payment);
+        reservation.setPayment(payment);
+        reservationRepository2.save(reservation);
+       // paymentRepository2.save(payment);
 
         return payment;
 
